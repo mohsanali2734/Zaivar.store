@@ -1,0 +1,1 @@
+export { formatPrice as money } from "@/lib/products";

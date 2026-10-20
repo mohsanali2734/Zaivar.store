@@ -1,26 +1,215 @@
 @import "tailwindcss";
+@import "tw-animate-css"; /* needed for animate-in, fade-in, slide-in-from-*, fill-mode-both */
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 36 33% 96%;
+    --foreground: 22 22% 10%;
+
+    --card: 36 33% 96%;
+    --card-foreground: 22 22% 10%;
+
+    --popover: 36 33% 96%;
+    --popover-foreground: 22 22% 10%;
+
+    /* Light mode primary: A richer, deeper bronze/gold that contrasts well on light backgrounds */
+    --primary: 38 45% 45%;
+    --primary-foreground: 36 33% 96%;
+
+    --secondary: 30 20% 88%;
+    --secondary-foreground: 22 22% 10%;
+
+    --muted: 30 15% 82%;
+    --muted-foreground: 25 10% 45%;
+
+    --accent: 30 20% 88%;
+    --accent-foreground: 22 22% 10%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 36 33% 96%;
+
+    --border: 30 20% 85%;
+    --input: 30 20% 85%;
+    --ring: 38 45% 45%;
+
+    --radius: 0rem;
+
+    --esp: #211711;
+    --obs: #151311;
+    --gold: #c5a46d;
+    --beige: #e9ded0;
+    --taupe: #8b7b6d;
+    --bg: #f8f5f0;
+    --ink: #211711;
+    --line: #e9ded0;
+  }
+
+  .dark {
+    --background: 25 15% 8%;
+    --foreground: 36 20% 95%;
+
+    --card: 25 15% 8%;
+    --card-foreground: 36 20% 95%;
+
+    --popover: 25 15% 8%;
+    --popover-foreground: 36 20% 95%;
+
+    /* Dark mode primary: A brighter, luminous gold (matches your --gold / #c5a46d vibe) that pops on dark backgrounds */
+    --primary: 38 45% 60%;
+    --primary-foreground: 25 15% 8%;
+
+    --secondary: 25 15% 15%;
+    --secondary-foreground: 36 20% 95%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 25 10% 65%;
+
+    --accent: 25 15% 18%;
+    --accent-foreground: 36 20% 95%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 36 20% 95%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 38 45% 60%;
+
+    --bg: #151311;
+    --ink: #f8f4ed;
+    --line: #3a2e25;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Colors + fonts (maps CSS variables to Tailwind utilities) */
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--color-muted-foreground, var(--muted-foreground)));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-esp: var(--esp);
+  --color-obs: var(--obs);
+  --color-gold: var(--gold);
+  --color-beige: var(--beige);
+  --color-taupe: var(--taupe);
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-serif: var(--serif), Georgia, serif;
+}
+
+/* Animations (separate non-inline @theme so keyframes are always emitted) */
+@theme {
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-twinkle: twinkle 2.4s ease-in-out infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-shine: shine 3s linear infinite;
+  --animate-wiggle: wiggle 1.2s ease-in-out infinite;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes shine {
+    to { background-position: 200% center; }
+  }
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-6deg); }
+    50% { transform: rotate(6deg); }
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  h1, h2, h3, .logo {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-size: clamp(34px, 4vw, 52px);
+  }
+
+  h2 {
+    font-size: clamp(30px, 4vw, 46px);
+    margin-bottom: 28px;
+  }
+}
+
+@layer utilities {
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  .text-gold-shine {
+    background-image: linear-gradient(90deg, #c5a46d, #f3dfae, #c5a46d);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  .red {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    border: 2px dashed #ef4444 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
