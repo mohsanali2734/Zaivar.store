@@ -1,3 +1,4 @@
+
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
@@ -8,31 +9,36 @@ import SiteFooter from "@/components/others/SiteFooter";
 import CartDrawer from "@/components/others/CartDrawer";
 import { SITE } from "@/lib/products";
 
-const geistSans = Geist({ 
-  variable: "--font-geist-sans", 
-  subsets: ["latin"], 
-  display: "swap" 
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({ 
-  variable: "--font-geist-mono", 
-  subsets: ["latin"], 
-  display: "swap" 
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
-const serif = Cormorant_Garamond({ 
-  subsets: ["latin"], 
-  weight: ["400", "500", "600"], 
-  style: ["normal", "italic"], 
+const serif = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   variable: "--serif",
-  display: "swap" 
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { 
-    default: SITE.title, 
-    template: `%s | ${SITE.name}` 
+
+  verification: {
+    google: "M7Yk5A8cawcd4TGbzpzxU0eQ31NGGgKzbtuUqush7kk",
+  },
+
+  title: {
+    default: SITE.title,
+    template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
   applicationName: SITE.name,
@@ -42,7 +48,7 @@ export const metadata: Metadata = {
     "PDF Crochet Guides",
     "Craft Patterns",
     "Plushie Crochet",
-    "DIY Crochet Projects"
+    "DIY Crochet Projects",
   ],
   authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
@@ -102,30 +108,34 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         "@id": `${SITE.url}/organization`,
-        "name": SITE.name,
-        "url": SITE.url,
-        "logo": `${SITE.url}/logo.png`,
-        "sameAs": []
+        name: SITE.name,
+        url: SITE.url,
+        logo: `${SITE.url}/logo.png`,
+        sameAs: [],
       },
       {
         "@type": "WebSite",
         "@id": `${SITE.url}/website`,
-        "url": SITE.url,
-        "name": SITE.name,
-        "description": SITE.description,
-        "publisher": {
-          "@id": `${SITE.url}/#organization`
+        url: SITE.url,
+        name: SITE.name,
+        description: SITE.description,
+        publisher: {
+          "@id": `${SITE.url}/#organization`,
         },
-        "inLanguage": "en-US"
-      }
-    ]
+        inLanguage: "en-US",
+      },
+    ],
   };
 
   return (
@@ -137,10 +147,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd),
+          }}
         />
       </head>
-      <body className="min-h-screen antialiased bg-background text-foreground" suppressHydrationWarning>
+
+      <body
+        className="min-h-screen antialiased bg-background text-foreground"
+        suppressHydrationWarning
+      >
         <StoreProvider>
           <a
             href="#main"
@@ -148,6 +164,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             Skip to content
           </a>
+
           <AnnouncementBar />
           <SiteHeader />
           <main id="main">{children}</main>
