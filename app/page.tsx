@@ -73,7 +73,6 @@ export default function Home() {
       <Marquee />
       <CategoryGrid />
 
-      {/* Bestsellers Section (Limited to 3 cards) */}
       <section aria-labelledby="best-title" className="pb-20">
         <div className="wrap">
           <SectionHeading id="best-title" eyebrow="Most loved" title="Bestsellers" subtitle="The pieces everyone keeps adding to their wishlist." />
@@ -84,7 +83,6 @@ export default function Home() {
       <TrustBar />
       <BrandStory />
 
-      {/* New Arrivals Section (Limited to 3 cards) */}
       <section aria-labelledby="new-title" className="py-20">
         <div className="wrap">
           <SectionHeading id="new-title" eyebrow="Just dropped" title="New Arrivals" subtitle="Fresh designs for this festive season." />
