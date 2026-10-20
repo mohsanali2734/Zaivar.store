@@ -19,11 +19,9 @@ export default function HeroCampaign() {
 
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden bg-secondary/60">
-      {/* Background Glow Blobs */}
       <div aria-hidden className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/30 blur-3xl animate-float" />
       <div aria-hidden className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-primary/20 blur-3xl animate-float [animation-delay:2s]" />
 
-      {/* Golden Sparks using Lucide Icon */}
       {SPARKS.map((pos, i) => (
         <div 
           key={i} 
@@ -70,10 +68,8 @@ export default function HeroCampaign() {
           </dl>
         </div>
 
-        {/* Visual Column */}
         <div className="relative mx-auto w-full max-w-md animate-in fade-in zoom-in-95 duration-1000 [animation-delay:300ms] fill-mode-both">
-          {/* Main Clean Image Frame */}
-          <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-primary/30 shadow-2xl">
+          <div className="relative aspect-4/5 overflow-hidden rounded-lg border border-primary/30 shadow-2xl">
             <Image 
               src={HERO.image} 
               alt={HERO.imageAlt} 
@@ -84,12 +80,10 @@ export default function HeroCampaign() {
             />
           </div>
 
-          {/* Rotating Sticker */}
           <div className="absolute -right-4 -top-4 grid size-24 place-items-center rounded-full bg-primary text-primary-foreground shadow-xl animate-spin-slow z-10">
             <span className="text-center text-[11px] font-bold uppercase leading-tight tracking-widest">{HERO.sticker}</span>
           </div>
 
-          {/* Floating Product Card */}
           {featured && (
             <Link href={`/product/${featured.slug}`} className="absolute -bottom-6 -left-6 z-10 flex items-center gap-3 rounded-md border bg-card/95 p-3 shadow-xl backdrop-blur animate-float transition-transform hover:scale-105">
               <div className="relative size-14 overflow-hidden rounded">
