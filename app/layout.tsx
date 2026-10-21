@@ -1,13 +1,21 @@
 
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Cormorant_Garamond,
+} from "next/font/google";
 import "./globals.css";
+
 import { StoreProvider } from "@/lib/store";
 import AnnouncementBar from "@/components/others/AnnouncementBar";
 import SiteHeader from "@/components/others/SiteHeader";
 import SiteFooter from "@/components/others/SiteFooter";
 import CartDrawer from "@/components/others/CartDrawer";
 import { SITE } from "@/lib/products";
+
+const googleVerification =
+  "M7Yk5A8cawcd4TGbzpzxU0eQ31NGGgKzbtuUqush7kk";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,15 +41,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
 
   verification: {
-    google: "M7Yk5A8cawcd4TGbzpzxU0eQ31NGGgKzbtuUqush7kk",
+    google: googleVerification,
   },
 
   title: {
     default: SITE.title,
     template: `%s | ${SITE.name}`,
   },
+
   description: SITE.description,
   applicationName: SITE.name,
+
   keywords: [
     "Crochet Patterns",
     "Digital Amigurumi Patterns",
@@ -50,17 +60,21 @@ export const metadata: Metadata = {
     "Plushie Crochet",
     "DIY Crochet Projects",
   ],
+
   authors: [{ name: SITE.name, url: SITE.url }],
   creator: SITE.name,
   publisher: SITE.name,
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   alternates: {
     canonical: "/",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -72,6 +86,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -88,12 +103,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
     title: SITE.title,
     description: SITE.description,
     images: [`${SITE.url}/og-image.jpg`],
   },
+
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
@@ -118,7 +135,7 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `${SITE.url}/organization`,
+        "@id": `${SITE.url}/#organization`,
         name: SITE.name,
         url: SITE.url,
         logo: `${SITE.url}/logo.png`,
@@ -126,7 +143,7 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": `${SITE.url}/website`,
+        "@id": `${SITE.url}/#website`,
         url: SITE.url,
         name: SITE.name,
         description: SITE.description,
@@ -145,6 +162,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${serif.variable}`}
     >
       <head>
+        {/* Google Search Console verification */}
+        <meta
+          name="google-site-verification"
+          content={googleVerification}
+        />
+
+        {/* Website structured data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -167,7 +191,9 @@ export default function RootLayout({
 
           <AnnouncementBar />
           <SiteHeader />
+
           <main id="main">{children}</main>
+
           <SiteFooter />
           <CartDrawer />
         </StoreProvider>
