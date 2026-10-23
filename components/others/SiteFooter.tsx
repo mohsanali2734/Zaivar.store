@@ -126,11 +126,7 @@ export default function SiteFooter() {
                     {CONFIG.email}
                   </a>
                 </p>
-                {/* <p>
-                  <a href={`tel:${toIntl(CONFIG.phone)}`} className="hover:text-gold">
-                    {CONFIG.phone}
-                  </a>
-                </p> */}
+              
                 <p>
                   <a
                     href={`https://wa.me/${WHATSAPP_INTL.replace("+", "")}`}
