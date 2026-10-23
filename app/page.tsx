@@ -11,31 +11,34 @@ import Faq from "@/components/home/Faq";
 import Newsletter from "@/components/home/Newsletter";
 import { FAQS, PRODUCTS, SITE, getByTag } from "@/lib/products";
 
+const OG_IMAGE_PATH = "/img/logo.png";
+
 export const metadata: Metadata = {
-  title: SITE.title,
+  title: { absolute: SITE.title },
   description: SITE.description,
-  keywords: SITE.keywords,
-  alternates: { canonical: SITE.url },
+  alternates: { canonical: "/" },
+
   openGraph: {
+    type: "website",
+    locale: "en_PK",
+    url: "/",
     title: SITE.title,
     description: SITE.description,
-    url: SITE.url,
     siteName: SITE.name,
-    images: [{ url: SITE.ogImage, width: 1200, height: 630 }],
-    type: "website",
+    images: [{ url: OG_IMAGE_PATH, alt: `${SITE.name} logo` }],
   },
-  twitter: { card: "summary_large_image", title: SITE.title, description: SITE.description, images: [SITE.ogImage] },
+
+  twitter: {
+    card: "summary",
+    title: SITE.title,
+    description: SITE.description,
+    images: [OG_IMAGE_PATH],
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      name: SITE.name,
-      url: SITE.url,
-      logo: `${SITE.url}/logo.png`,
-    },
     {
       "@type": "ItemList",
       name: "Bestselling artificial jewellery",
@@ -48,9 +51,20 @@ const jsonLd = {
           image: `${SITE.url}${p.image}`,
           category: p.cat,
           material: p.material,
+          brand: { "@type": "Brand", name: SITE.name },
           url: `${SITE.url}/product/${p.slug}`,
-          aggregateRating: { "@type": "AggregateRating", ratingValue: p.rating, reviewCount: p.reviews },
-          offers: { "@type": "Offer", priceCurrency: SITE.currency, price: p.price, availability: "https://schema.org/InStock" },
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: p.rating,
+            reviewCount: p.reviews,
+          },
+          offers: {
+            "@type": "Offer",
+            url: `${SITE.url}/product/${p.slug}`,
+            priceCurrency: SITE.currency,
+            price: p.price,
+            availability: "https://schema.org/InStock",
+          },
         },
       })),
     },
@@ -65,17 +79,27 @@ const jsonLd = {
   ],
 };
 
+const jsonLdString = JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+
 export default function Home() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdString }}
+      />
       <HeroCampaign />
       <Marquee />
       <CategoryGrid />
 
       <section aria-labelledby="best-title" className="pb-20">
         <div className="wrap">
-          <SectionHeading id="best-title" eyebrow="Most loved" title="Bestsellers" subtitle="The pieces everyone keeps adding to their wishlist." />
+          <SectionHeading
+            id="best-title"
+            eyebrow="Most loved"
+            title="Bestsellers"
+            subtitle="The pieces everyone keeps adding to their wishlist."
+          />
           <ProductGrid items={getByTag("Bestseller").slice(0, 3)} />
         </div>
       </section>
@@ -85,7 +109,12 @@ export default function Home() {
 
       <section aria-labelledby="new-title" className="py-20">
         <div className="wrap">
-          <SectionHeading id="new-title" eyebrow="Just dropped" title="New Arrivals" subtitle="Fresh designs for this festive season." />
+          <SectionHeading
+            id="new-title"
+            eyebrow="Just dropped"
+            title="New Arrivals"
+            subtitle="Fresh designs for this festive season."
+          />
           <ProductGrid items={getByTag("New").slice(0, 3)} />
         </div>
       </section>

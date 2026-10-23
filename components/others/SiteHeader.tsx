@@ -17,7 +17,6 @@ import {
 import { NAV, SITE } from "@/lib/products";
 import { useStore } from "@/lib/store";
 
-/* --- Count Badge Component using Shadcn Primary tokens --- */
 function CountBadge({ n }: { n: number }) {
   if (!n) return null;
   return (
@@ -30,7 +29,6 @@ function CountBadge({ n }: { n: number }) {
   );
 }
 
-/* --- Main Site Header Component --- */
 export default function SiteHeader() {
   const { count, wish, setOpen } = useStore();
   const router = useRouter();

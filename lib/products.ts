@@ -1,39 +1,38 @@
-
 export const CATEGORIES = [
   {
     name: "Earrings",
     slug: "earrings",
     image: "/img/categories/earing.png", 
-    alt: "Gold plated jhumka and stud earrings",
-    blurb: "Jhumkas, studs & statement drops",
+    alt: "Gold plated jhumka earrings and stud earrings",
+    blurb: "Jhumka earrings, studs & statement drops",
   },
   {
     name: "Necklaces",
     slug: "necklaces",
     image: "/img/categories/necklaces.png",
-    alt: "Kundan and layered necklaces",
-    blurb: "Layered, kundan & choker styles",
+    alt: "Kundan choker and layered artificial necklaces",
+    blurb: "Kundan chokers, layered & pendant styles",
   },
   {
     name: "Rings",
     slug: "rings",
     image: "/img/categories/rings.png",
-    alt: "Adjustable cocktail rings",
+    alt: "Adjustable cocktail rings and stackable rings",
     blurb: "Stackable & adjustable rings",
   },
   {
     name: "Bangles & Bracelets",
     slug: "bangles-bracelets",
     image: "/img/categories/bangles.png",
-    alt: "Festive bangles and bracelets",
-    blurb: "Stacks made for celebrations",
+    alt: "Festive gold-tone bangles and charm bracelets",
+    blurb: "Gold-tone bangle stacks made for celebrations",
   },
   {
     name: "Jewellery Sets",
     slug: "jewellery-sets",
     image: "/img/categories/sets.png",
     alt: "Complete bridal and festive jewellery sets",
-    blurb: "Matching sets, zero guesswork",
+    blurb: "Matching bridal & festive sets, zero guesswork",
   },
 ] as const;
 
@@ -90,13 +89,12 @@ export interface InfoPage {
   body: { h: string; p: string }[];
 }
 
-// ---------- Site / SEO ----------
 export const SITE = {
   name: "ZAIVAR",
-  url: "https://www.zaivar.store",
-  title: "ZAIVAR | Artificial Jewellery for Festive & Everyday Style",
+  url: "https://zaivar.store",
+  title: "ZAIVAR | Artificial Jewellery Online in Pakistan",
   description:
-    "Shop trendy artificial jewellery online: jhumkas, kundan necklaces, bangles, rings and complete sets. Anti-tarnish, lightweight and made for every celebration.",
+    "Shop artificial jewellery in Pakistan: jhumkas, kundan sets, bangles & rings. Anti-tarnish plating, cash on delivery and 7-day returns.",
   keywords: [
     "artificial jewellery online",
     "jhumka earrings",
@@ -105,11 +103,10 @@ export const SITE = {
     "festive jewellery",
     "gold plated bangles",
   ],
-  ogImage: "/img/logo",
+  ogImage: "/img/logo.png",
   currency: "PKR",
 };
 
-// ---------- Store config ----------
 export const CONFIG = {
   announce: [
     "Free shipping on orders over Rs. 3,000",
@@ -118,14 +115,15 @@ export const CONFIG = {
     "7-day easy returns",
   ],
   email: "zaivar.info@gmail.com",
+  // TODO: replace these two placeholders with your REAL numbers before launch.
   phone: "+92 300 0000000",
   whatsapp: "923001234567",
   freeShipping: 3000,
   shippingFee: 250,
   socials: [
-    { label: "Instagram", href: "https://instagram.com/zaiver" },
-    { label: "TikTok", href: "https://tiktok.com/@zaiver" },
-    { label: "Facebook", href: "https://facebook.com/zaiver" },
+    { label: "Instagram", href: "https://www.instagram.com/zaivar.info/" },
+    { label: "TikTok", href: "https://www.tiktok.com/@zaivarstore" },
+    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61595752559876" },
   ],
 };
 
@@ -159,7 +157,7 @@ export const HERO = {
   title: "Jewellery That Makes",
   highlight: "Every Moment Yours.",
   description:
-    "Discover thoughtfully curated artificial jewellery designed to bring timeless elegance to every celebration.",
+    "Discover thoughtfully curated artificial jewellery in Pakistan, designed to bring timeless elegance to every celebration.",
   image: "/img/heros.png",
   imageAlt: "Model wearing ZAIVAR gold jhumkas, kundan necklace and maang tikka",
   primaryCta: { label: "Shop Collection", href: "/shop" },
@@ -168,6 +166,7 @@ export const HERO = {
   sticker: "New Drop",
 };
 
+// NOTE: unchanged. Confirm these figures are real and verifiable before keeping them.
 export const HERO_STATS: Stat[] = [
   { value: "50K+", label: "Happy customers" },
   { value: "4.8★", label: "Average rating" },
@@ -202,6 +201,7 @@ export const STORY = {
   points: ["Designed in-house", "Inspired by South Asian craft", "Made for everyday & occasions"],
 };
 
+// NOTE: unchanged. Confirm these testimonials are from real customers.
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Areeba Khawaja",
@@ -243,6 +243,22 @@ export const FAQS: Faq[] = [
     q: "Can I return or exchange a piece?",
     a: "Absolutely. You have 7 days from delivery to return or exchange unworn items in original packaging.",
   },
+  {
+    q: "How much does shipping cost in Pakistan?",
+    a: `Shipping is free on orders over Rs. ${CONFIG.freeShipping.toLocaleString("en-PK")}. Below that, a flat fee of Rs. ${CONFIG.shippingFee} applies.`,
+  },
+  {
+    q: "Do you deliver all over Pakistan?",
+    a: "Yes. We deliver across Pakistan, including Punjab, Sindh, Khyber Pakhtunkhwa, Balochistan, Islamabad, Azad Kashmir and Gilgit-Baltistan.",
+  },
+  {
+    q: "Is ZAIVAR jewellery suitable for weddings and festive occasions?",
+    a: "Yes. Our jhumkas, kundan necklaces, bangle stacks and matching sets are designed for weddings, Eid and mehndi, and many pieces also work for everyday wear.",
+  },
+  {
+    q: "How do I start a return or exchange?",
+    a: `Email ${CONFIG.email} with your order number and we will arrange a pickup.`,
+  },
 ];
 
 export const NEWSLETTER = {
@@ -252,7 +268,7 @@ export const NEWSLETTER = {
   shopLabel: "Shop now",
   shopHref: "/shop",
   secondLabel: "Chat on WhatsApp",
-  secondHref: "https://wa.me/923001234567?text=Hi%20ZAIVER%2C%20I%20want%20to%20know%20about%20new%20drops",
+  secondHref: `https://wa.me/${CONFIG.whatsapp}?text=Hi%20ZAIVAR%2C%20I%20want%20to%20know%20about%20new%20drops`,
 };
 
 // ---------- Info pages (About, Shipping, Returns, FAQ, Privacy) ----------
@@ -267,6 +283,10 @@ export const INFO_PAGES: Record<string, InfoPage> = {
         h: "What we make",
         p: "Artificial jewellery designed in-house, inspired by South Asian craft and finished with an anti-tarnish plating so it lasts beyond one season.",
       },
+      {
+        h: "What you can shop",
+        p: "Browse jhumka earrings, kundan necklaces, stackable rings, festive bangles and complete bridal and festive jewellery sets, all delivered across Pakistan.",
+      },
     ],
   },
   shipping: {
@@ -277,6 +297,10 @@ export const INFO_PAGES: Record<string, InfoPage> = {
       {
         h: "Shipping cost",
         p: `Free over Rs. ${CONFIG.freeShipping.toLocaleString("en-PK")}. Otherwise a flat Rs. ${CONFIG.shippingFee}.`,
+      },
+      {
+        h: "Payment options",
+        p: "Cash on delivery is available across Pakistan, along with card and wallet payments.",
       },
     ],
   },
@@ -306,6 +330,8 @@ export const INFO_PAGES: Record<string, InfoPage> = {
 // ---------- Products ----------
 const img = (name: string) => `/images/products/${name}.jpg`;
 
+// NOTE: rating and reviews are unchanged. They feed AggregateRating schema,
+// so keep them only if they come from real customer reviews.
 export const PRODUCTS: Product[] = [
   {
     id: "p1",
@@ -325,7 +351,7 @@ export const PRODUCTS: Product[] = [
     finish: "Antiqued Gold",
     colour: "Gold / Ivory",
     stock: 18,
-    desc: "Intricately detailed temple-style Kundan jhumkas trimmed with a cluster of mini seed pearls. Designed to bring effortless regal elegance to festive outfits.",
+    desc: "Royal Kundan Jhumkas are temple-style jhumka earrings in antiqued gold, set with kundan stones and trimmed with a cluster of mini seed pearls and a delicate pearl drop fringe. The brass base gives them a regal, traditional look that suits weddings, Eid and festive outfits. The gold and ivory tones pair well with both bright and pastel kurtas.",
   },
   {
     id: "p2",
@@ -345,7 +371,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Clear / Gold",
     stock: 22,
-    desc: "Bloom-inspired circular studs with set glass stone petals surrounding a brilliant center. Comfortable for all-day wear.",
+    desc: "Floral Kundan Studs are circular, bloom-inspired stud earrings in gold plating, with glass stone petals set around a brilliant centre. They are comfortable for all-day wear and easy to pair with traditional or western outfits, a simple kundan upgrade for days when jhumkas feel like too much.",
   },
   {
     id: "p3",
@@ -365,7 +391,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Crystal / Gold",
     stock: 12,
-    desc: "Dramatic teardrop stone encased in a pave-set halo frame. Catches the light with every movement for evening glitz.",
+    desc: "Teardrop Crystal Statement Drops feature a dramatic teardrop cubic zirconia stone encased in a pave-set halo frame with a gold finish. The crystal catches the light with every movement, making them a strong choice for evening events, dinners and festive nights when you want one standout piece.",
   },
   {
     id: "p4",
@@ -384,7 +410,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Gold",
     stock: 30,
-    desc: "Chunky hinged hoops featuring fine beaded border details. Hypoallergenic and tarnish-resistant for seamless daily wear.",
+    desc: "Textured Gold Hoops are chunky hinged hoop earrings with a fine beaded border, made from 18k gold-plated stainless steel. They are hypoallergenic and tarnish-resistant, designed as an everyday essential you can wear daily and style with studs or on their own.",
   },
   {
     id: "p5",
@@ -404,7 +430,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Ivory / Gold",
     stock: 15,
-    desc: "Golden sunburst motif studs anchored with a triple pearl cluster dangle. Sweet, feminine, and ideal for day events.",
+    desc: "Pearl Cluster Bloom Studs are gold sunburst-motif studs anchored with a triple faux pearl cluster dangle. Sweet and feminine, they suit day events, family gatherings and festive lunches, and pair easily with simple kurtas as well as western outfits.",
   },
   {
     id: "p6",
@@ -424,7 +450,7 @@ export const PRODUCTS: Product[] = [
     finish: "Antiqued Gold",
     colour: "Green / Gold",
     stock: 8,
-    desc: "Hand-painted rich green Meenakari enamel jhumkas studded with floral Kundan tops and soft pearl tassels.",
+    desc: "Emerald Meenakari Jhumkas are traditional jhumka earrings with hand-painted rich green Meenakari enamel, floral kundan tops and soft pearl tassels, set in antiqued gold-toned brass. A festive pick for Eid, mehndi and wedding functions that adds a deep pop of colour to ivory, white or gold outfits.",
   },
   {
     id: "p7",
@@ -443,7 +469,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Clear Glass / Gold",
     stock: 25,
-    desc: "Clean geometric emerald-cut crystal pendants hanging suspended from delicate round stud tops. Modern chic perfection.",
+    desc: "Baguette Crystal Minimal Drops are clean, geometric drop earrings with emerald-cut glass crystal pendants hanging from round gold stud tops. A minimalist pair for office wear, dinners and modern festive looks when you prefer subtle sparkle to heavy jhumkas.",
   },
   {
     id: "p8",
@@ -463,7 +489,7 @@ export const PRODUCTS: Product[] = [
     finish: "Yellow Gold",
     colour: "Gold / Pearl",
     stock: 10,
-    desc: "Radiant starburst flower top adorned with marquise cut stones and finished with a luminous teardrop pearl drop.",
+    desc: "Crystal Floral Pearl Drops combine a radiant starburst flower top adorned with marquise-cut stones and a luminous teardrop shell pearl, in a yellow gold finish. A bridal favourite that also works for engagement events, wedding functions and formal evenings.",
   },
  
   {
@@ -484,7 +510,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Gold & Red",
     stock: 12,
-    desc: "A statement choker with hand-set kundan stones and an adjustable dori back for a perfect fit.",
+    desc: "The Kundan Choker is a statement choker necklace with hand-set kundan stones in gold and red, finished with an adjustable dori back for a comfortable fit. Pair it with jhumkas for weddings, mehndi and festive nights, or wear it on its own with a plain neckline.",
   },
   {
     id: "p10",
@@ -503,7 +529,7 @@ export const PRODUCTS: Product[] = [
     finish: "Rose Gold",
     colour: "Rose Gold",
     stock: 30,
-    desc: "Two delicate chains with tiny star charms. The easy layered look that works with kurtas and tees alike.",
+    desc: "The Layered Star Necklace features two delicate rose gold chains with tiny star charms for an easy layered look. It works with kurtas, tees and casual outfits alike, making it a simple everyday pendant necklace and an easy gift idea.",
   },
   {
     id: "p11",
@@ -522,7 +548,7 @@ export const PRODUCTS: Product[] = [
     finish: "Silver",
     colour: "Silver",
     stock: 60,
-    desc: "Thin zircon band, adjustable to fit most fingers. Stack two or three for the full look.",
+    desc: "The Stackable Sparkle Ring is a thin zircon band in a silver finish, adjustable to fit most fingers. Wear one for subtle sparkle or stack two or three for the full look. The adjustable size also makes it an easy gift.",
   },
   {
     id: "p12",
@@ -541,7 +567,7 @@ export const PRODUCTS: Product[] = [
     finish: "Oxidised",
     colour: "Green",
     stock: 0,
-    desc: "Oversized emerald-tone gem on an oxidised setting. A one-piece outfit upgrade.",
+    desc: "The Cocktail Gem Ring is a bold statement ring with an oversized emerald-tone resin gem on an oxidised setting. It is a simple way to upgrade a one-piece outfit and works well with both traditional and western looks.",
   },
   {
     id: "p13",
@@ -561,7 +587,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Gold",
     stock: 18,
-    desc: "A set of six bangles with a mix of plain and textured finishes. Ready-stacked for Eid and mehndi.",
+    desc: "The Festive Bangle Stack is a set of six gold-tone bangles mixing plain and textured finishes, ready stacked for Eid, mehndi and wedding functions. Wear the full set together for a traditional look, or split the bangles across both wrists.",
   },
   {
     id: "p14",
@@ -580,7 +606,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Gold",
     stock: 22,
-    desc: "A dainty chain bracelet with moon, star and evil-eye charms. Adjustable clasp.",
+    desc: "The Charm Bracelet is a dainty gold-plated chain bracelet with moon, star and evil-eye charms and an adjustable clasp. A small, meaningful piece for everyday wear and an easy gift idea for birthdays and festive occasions.",
   },
   {
     id: "p15",
@@ -600,7 +626,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Gold & Pearl",
     stock: 8,
-    desc: "Necklace, jhumkas and maang tikka in one matching kundan-and-pearl set. Arrives in a keepsake box.",
+    desc: "The Kundan Bridal Set brings a kundan-and-pearl necklace, jhumkas and maang tikka together in one matching gold jewellery set, so there is no guesswork when dressing for a wedding or bridal event. It arrives in a keepsake box, ready to gift.",
   },
   {
     id: "p16",
@@ -619,7 +645,7 @@ export const PRODUCTS: Product[] = [
     finish: "Gold",
     colour: "Emerald Green",
     stock: 10,
-    desc: "Deep green glass stones in a gold-tone setting. Choker-length necklace with matching earrings.",
+    desc: "The Emerald Festive Set pairs a choker-length necklace with matching earrings, made with deep emerald-green glass stones in a gold-tone setting. A coordinated jewellery set for Eid, mehndi and festive dinners that works with white, black or gold outfits.",
   },
  
 ];
